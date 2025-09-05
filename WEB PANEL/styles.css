@@ -295,7 +295,197 @@ img[data-style="hion"] {
     cursor: pointer;
 }
 
-/* Additional styles will be added as we move more inline styles */
+/* Command Center Styles */
+.command-center {
+    background: linear-gradient(135deg, #001122, #002244);
+    border: 1px solid #00ff88;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    color: #fff;
+    display: none; /* Hidden by default, shown when victim selected */
+}
+
+.command-center.active {
+    display: block;
+}
+
+.command-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #00ff88;
+}
+
+.command-header h3 {
+    color: #00ff88;
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.command-status {
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+.quick-commands, .custom-commands, .command-history {
+    margin-bottom: 25px;
+}
+
+.quick-commands h4, .custom-commands h4, .command-history h4 {
+    color: #00ff88;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.command-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.cmd-btn {
+    background: linear-gradient(45deg, #00ff88, #00cc66);
+    color: #000;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+    text-align: center;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cmd-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
+}
+
+.cmd-btn:active {
+    transform: scale(0.95);
+}
+
+.cmd-btn.primary {
+    background: linear-gradient(45deg, #00ff88, #00cc66);
+}
+
+.cmd-btn.secondary {
+    background: linear-gradient(45deg, #4444ff, #0000cc);
+}
+
+.cmd-btn.success {
+    background: linear-gradient(45deg, #00ff88, #00cc66);
+}
+
+.cmd-btn.danger {
+    background: linear-gradient(45deg, #ff4444, #cc0000);
+}
+
+.cmd-btn.info {
+    background: linear-gradient(45deg, #4444ff, #0000cc);
+}
+
+.command-form {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #00ff88;
+    font-weight: bold;
+}
+
+.cmd-input, .cmd-input:focus {
+    width: 100%;
+    padding: 8px 12px;
+    background: #001122;
+    border: 1px solid #00ff88;
+    border-radius: 4px;
+    color: #fff;
+    font-family: monospace;
+    outline: none;
+}
+
+.cmd-input:focus {
+    box-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
+}
+
+.command-log {
+    background: #000;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    font-family: monospace;
+    font-size: 0.9em;
+}
+
+.log-entry {
+    padding: 5px 0;
+    border-bottom: 1px solid #222;
+}
+
+.log-entry:last-child {
+    border-bottom: none;
+}
+
+.log-entry.success { color: #00ff88; }
+.log-entry.error { color: #ff4444; }
+.log-entry.info { color: #4444ff; }
+.log-entry.warning { color: #ffa500; }
+
+/* Responsive Command Center */
+@media (max-width: 768px) {
+    .command-center {
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    .command-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .command-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 8px;
+    }
+
+    .cmd-btn {
+        padding: 8px 12px;
+        font-size: 0.8em;
+        min-height: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .command-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cmd-btn {
+        font-size: 0.7em;
+        padding: 6px 8px;
+    }
+}
 
 /* Connection Status Indicator */
 .connection-status {
@@ -649,4 +839,11 @@ button:focus,
     .connection-status {
         border: 2px solid currentColor;
     }
+}
+
+/* Selected victim styling */
+.victim-item.selected {
+    border-color: #ff4444;
+    box-shadow: 0 0 15px rgba(255, 68, 68, 0.5);
+    transform: scale(1.02);
 }

