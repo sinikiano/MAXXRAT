@@ -1,0 +1,652 @@
+/* MAXXRAT Web Panel Styles */
+
+/* Reset and base styles */
+* {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    font-family: Verdana, sans-serif;
+}
+
+/* Custom font */
+@font-face {
+    font-family: 'eglantine';
+    font-style: normal;
+    font-weight: normal;
+    src: local('eglantine'), url('./asset/eglantine.woff') format('woff');
+}
+
+/* Main container styles */
+#users {
+    height: 100%;
+    padding-bottom: 15px;
+    background: #000;
+    width: 100%;
+    z-index: 999999999;
+    color: green;
+    display: block;
+    position: relative;
+}
+
+/* Header styles */
+.head {
+    width: calc(100% - 50px);
+    height: 50px;
+    background: url("./img/imgg1.png");
+    background-size: cover;
+    padding-left: 50px;
+    line-height: 50px;
+    -webkit-user-select: none;
+    user-select: none;
+    position: relative;
+    overflow: auto;
+}
+
+/* Icon container styles */
+.dfle {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Individual icon styles */
+.icon {
+    height: 50px;
+    width: 50px;
+    background-size: 52px 52px;
+    background-repeat: no-repeat;
+    margin: 20px;
+    text-align: center;
+    font-size: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.icon:hover {
+    transform: scale(1.1);
+}
+
+/* Specific icon styles */
+.icon[data-bg="dump_call_logs"] {
+    background: url('./img/dump_call_logs.png');
+    background-position: 0 0;
+}
+
+.icon[data-bg="filesmanager"] {
+    background: url('./img/ic3.png');
+    background-size: 50px 50px;
+}
+
+.icon[data-bg="getpackages"] {
+    background: url('./img/list_installed_apps.png');
+    background-position: 0 0;
+}
+
+.icon[data-bg="deviceinfo"] {
+    background: url('./img/dump_device_info.png');
+    background-position: 0 0;
+}
+
+.icon[data-bg="toastt"] {
+    background: url('./img/toast.png');
+    background-size: 50px 50px;
+}
+
+.icon[data-bg="dumpcontact"] {
+    background: url('./img/dump_contacts.png');
+    background-position: 0 0;
+}
+
+.icon[data-bg="funcmd_fmc1_itune"] {
+    background: url('./img/itune.png');
+    transform: scale(1.07);
+}
+
+.icon[data-bg="sendmsg"] {
+    background: url('./img/send_message.png');
+    transform: scale(1);
+}
+
+.icon[data-bg="startshell"] {
+    background: url('./img/shell_command.png');
+    background-size: 50px 50px;
+}
+
+.icon[data-bg="funcmd_fmc1_img3"] {
+    background: url('./img/img3.png');
+    background-size: 54px 54px;
+    background-position: -2px -2px;
+}
+
+.icon[data-bg="funcmd_fmc1_img5"] {
+    background: url('./img/img5.png');
+    background-size: 50px 50px;
+}
+
+.icon[data-bg="keylogger"] {
+    background: url('./img/img6.png');
+    background-size: 50px 50px;
+}
+
+.icon[data-bg="changewallpaper"] {
+    background: url('./img/img1.png');
+    background-size: 50px 50px;
+    transform: scale(1.25);
+}
+
+.icon[data-bg="notificationlog"] {
+    background: url('./img/img2.png');
+    background-size: 50px 50px;
+}
+
+.icon[data-bg="showphish"] {
+    background: url('./img/phish.png');
+    background-size: 50px 50px;
+}
+
+.icon[data-bg="showphpag"] {
+    background: url('./img/scams.png');
+    background-size: 50px 50px;
+}
+
+.icon[data-bg="micrec"] {
+    background: url('./img/microphone_rec.png');
+    background-size: 50px 50px;
+}
+
+.icon[data-bg="showclip"] {
+    background: url('./img/clip.png');
+    background-size: 50px 50px;
+}
+
+.icon[data-bg="funcmd_fmc2_img4"] {
+    background: url('./img/img4.png');
+    background-size: 50px 50px;
+}
+
+.icon[data-bg="funcmd_fmc2_web"] {
+    background: url('./img/web.png');
+    background-size: 50px 50px;
+}
+
+/* Telegram link styles */
+.telegram-link {
+    height: 50px;
+    width: 60%;
+    margin: 15px auto auto;
+    background: rgb(0, 0, 17);
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    line-height: 50px;
+    border: 1px solid rgb(0, 255, 136);
+}
+
+.telegram-link a {
+    color: #00ffea;
+    text-decoration: none;
+}
+
+/* Command center styles */
+#cmdcernter {
+    display: none;
+}
+
+/* Iframe styles */
+#imv2 {
+    height: 40%;
+    width: 100%;
+}
+
+/* Notification styles */
+#notikey {
+    display: none;
+}
+
+/* Heading styles */
+h3 {
+    color: #0dd;
+}
+
+h3.fun-commands {
+    color: red;
+}
+
+h4 {
+    color: #0fa;
+}
+
+h3.wallpaper-title {
+    color: #0f9;
+}
+
+/* Button styles */
+button {
+    margin-left: 10px;
+}
+
+/* Image styles */
+img[data-style="hion"] {
+    max-height: 60px;
+    max-width: 60px;
+}
+
+/* Notice modal styles */
+.notice-modal {
+    height: 100%;
+    width: 100%;
+    z-index: 2147483647;
+    background: rgb(0, 0, 17);
+    color: rgb(255, 255, 255);
+    position: fixed;
+    top: 50px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.notice-content {
+    height: 290px;
+    width: 250px;
+    background: rgb(0, 0, 0);
+    border-radius: 10px;
+    border: 1px solid rgb(0, 255, 136);
+    padding: 10px;
+}
+
+.notice-content h3 {
+    color: red;
+}
+
+.notice-content h3:first-child {
+    color: red;
+}
+
+.notice-content b {
+    color: blue;
+}
+
+.notice-content b.admin-contact {
+    color: yellow;
+}
+
+.notice-content a {
+    color: #0f8;
+}
+
+.notice-content button {
+    margin-top: 5px;
+    color: white;
+    background: #001;
+    border: 1px solid red;
+    border-radius: 5px;
+    height: 30px;
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+.notice-content u {
+    color: red;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* Additional styles will be added as we move more inline styles */
+
+/* Connection Status Indicator */
+.connection-status {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.connection-status.connected {
+    background: linear-gradient(45deg, #00ff88, #00cc66);
+    color: #000;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.connection-status.connecting {
+    background: linear-gradient(45deg, #ffa500, #ff8c00);
+    color: #000;
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.5);
+}
+
+.connection-status.disconnected {
+    background: linear-gradient(45deg, #ff4444, #cc0000);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+}
+
+/* Enhanced Victim Item Styling */
+.victim-item {
+    background: linear-gradient(135deg, #001122, #002244);
+    border: 1px solid #00ff88;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.victim-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+    border-color: #00cc66;
+}
+
+.victim-item.online {
+    border-left: 4px solid #00ff88;
+}
+
+.victim-item.offline {
+    border-left: 4px solid #666;
+    opacity: 0.7;
+}
+
+.victim-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00ff88, #00cc66, #009944);
+}
+
+.victim-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.victim-name {
+    color: #00ff88;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.victim-status {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.victim-status.online {
+    background: #00ff88;
+    color: #000;
+}
+
+.victim-status.offline {
+    background: #666;
+    color: #fff;
+}
+
+.victim-details {
+    color: #ccc;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.victim-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.victim-actions button {
+    background: linear-gradient(45deg, #00ff88, #00cc66);
+    color: #000;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s ease;
+}
+
+.victim-actions button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 255, 136, 0.4);
+}
+
+.victim-actions button:active {
+    transform: scale(0.95);
+}
+
+/* Real-time Activity Indicator */
+.activity-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00ff88;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+}
+
+/* Error Handling UI */
+.error-message {
+    background: linear-gradient(45deg, #ff4444, #cc0000);
+    color: #fff;
+    padding: 12px;
+    border-radius: 6px;
+    margin: 10px 0;
+    border-left: 4px solid #ff8888;
+    position: relative;
+}
+
+.error-message::before {
+    content: '⚠';
+    font-size: 16px;
+    margin-right: 8px;
+}
+
+.success-message {
+    background: linear-gradient(45deg, #00ff88, #00cc66);
+    color: #000;
+    padding: 12px;
+    border-radius: 6px;
+    margin: 10px 0;
+    border-left: 4px solid #88ff88;
+    position: relative;
+}
+
+.success-message::before {
+    content: '✓';
+    font-size: 16px;
+    margin-right: 8px;
+}
+
+.info-message {
+    background: linear-gradient(45deg, #4444ff, #0000cc);
+    color: #fff;
+    padding: 12px;
+    border-radius: 6px;
+    margin: 10px 0;
+    border-left: 4px solid #8888ff;
+    position: relative;
+}
+
+.info-message::before {
+    content: 'ℹ';
+    font-size: 16px;
+    margin-right: 8px;
+}
+
+/* Loading States */
+.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #00ff88;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Enhanced Button Styles */
+.btn-primary {
+    background: linear-gradient(45deg, #00ff88, #00cc66);
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
+}
+
+.btn-primary:active {
+    transform: scale(0.95);
+}
+
+.btn-secondary {
+    background: linear-gradient(45deg, #444, #666);
+    color: #fff;
+    border: 1px solid #888;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(45deg, #666, #888);
+    transform: translateY(-1px);
+}
+
+/* Responsive Design Improvements */
+@media (max-width: 768px) {
+    .victim-item {
+        padding: 10px;
+        margin: 5px 0;
+    }
+    
+    .victim-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .victim-actions {
+        justify-content: center;
+    }
+    
+    .connection-status {
+        top: 5px;
+        right: 5px;
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+    
+    .icon {
+        height: 40px;
+        width: 40px;
+        margin: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .head {
+        height: 40px;
+        line-height: 40px;
+        padding-left: 40px;
+    }
+    
+    .dfle {
+        padding: 10px;
+    }
+    
+    .icon {
+        height: 35px;
+        width: 35px;
+        margin: 8px;
+        font-size: 8px;
+    }
+    
+    .telegram-link {
+        width: 80%;
+        height: 40px;
+        line-height: 40px;
+        margin: 10px auto;
+    }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus States for Accessibility */
+button:focus,
+.icon:focus {
+    outline: 2px solid #00ff88;
+    outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .victim-item {
+        border: 2px solid #00ff88;
+    }
+    
+    .connection-status {
+        border: 2px solid currentColor;
+    }
+}
