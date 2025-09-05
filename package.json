@@ -1,0 +1,30 @@
+{
+  "name": "maxxrat-web-panel",
+  "version": "1.0.0",
+  "description": "MAXXRAT - Advanced Android Remote Administration Tool Web Panel",
+  "main": "WEB PANEL/index.html",
+  "scripts": {
+    "dev": "cd WEB PANEL && python -m http.server 3000",
+    "build": "echo 'Static site - no build required'",
+    "start": "cd WEB PANEL && python -m http.server 3000"
+  },
+  "keywords": [
+    "android",
+    "rat",
+    "remote-administration",
+    "supabase",
+    "web-panel"
+  ],
+  "author": "MAXXRAT Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sinikiano/MAXXRAT.git"
+  },
+  "homepage": "https://maxxrat.vercel.app",
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

@@ -1,0 +1,31 @@
+# MAXXRAT Vercel Deployment Ignore File
+
+# Git files
+.git
+.gitignore
+
+# Development files
+temp_script.txt
+script.js.backup
+
+# Android app (not needed for web panel)
+ANDROID APP/
+
+# Documentation (optional for deployment)
+VERCEL_DEPLOYMENT_README.md
+README.md
+LICENSE
+
+# Deployment scripts
+deploy-to-vercel.bat
+
+# Node modules (if any)
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
