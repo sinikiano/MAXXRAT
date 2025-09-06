@@ -847,3 +847,9 @@ button:focus,
     box-shadow: 0 0 15px rgba(255, 68, 68, 0.5);
     transform: scale(1.02);
 }
+
+/* Notification Elements */
+#error-notification,
+#success-notification {
+    display: none;
+}

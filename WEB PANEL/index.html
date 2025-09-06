@@ -49,6 +49,15 @@
             <div id="loadtxt">Processing</div>
         </div>
 
+        <!-- Connection Status Indicator -->
+        <div id="connection-status" class="connection-status disconnected" role="status" aria-label="Connection status">
+            Disconnected
+        </div>
+
+        <!-- Notifications -->
+        <div id="error-notification" class="error-message" role="alert" aria-live="assertive"></div>
+        <div id="success-notification" class="success-message" role="alert" aria-live="assertive"></div>
+
         <!-- Victims List -->
         <div id="users" role="region" aria-label="Victims list">
             <br>
@@ -228,8 +237,8 @@
             </ul>
         </div>
 <div id="viewers" >
-<iframe id="vieweri"  src="data:text/html,<h4 style='color:green' > Getting File for preview....</h4>" ></iframe>
-<a href="#" id="downlo"  target="_blank" download="file.html"   ><div class="down" >				<svg  fill="white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>							</div></a>
+<iframe id="vieweri" src="data:text/html,<h4 style='color:green' > Getting File for preview....</h4>" title="File Preview"></iframe>
+<a href="#" id="downlo" target="_blank" download="file.html" title="Download File"><div class="down" >				<svg  fill="white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>							</div></a>
 </div>
 
 
